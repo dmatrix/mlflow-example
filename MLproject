@@ -5,6 +5,4 @@ conda_env: conda.yaml
 entry_points:
  main: 
    parameters:
-    epochs: {type: int, default: 10}
-    hidden_layers: {type: int, default: 256}
-    command: "python keras_mnist_lab_5.py" 
+    command: "python keras_mnist_lab_5.py --epochs=10 --hidden_layers=128" 
