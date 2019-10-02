@@ -119,19 +119,17 @@ class RFRModel():
             runID = run.info.run_uuid
             experimentID = run.info.experiment_id
 
-            # create image artifact directory
-            image_dir = get_mlflow_directory_path(experimentID, runID, "images")
-            save_image = os.path.join(image_dir, "rsme_estimators.png")
-            fig.savefig(save_image)
+            # create image artifact
+            fig.savefig("rsme_estimators.png")
 
             # plot R2 graph and save as artifacts
             (fig_2, ax) = plot_graphs(rfr.estimators, rfr.r2, "Random Forest Estimators", "R2", "R2 vs Estimators")
-            # save images
-            save_image_2 = os.path.join(image_dir, "r2_estimators.png")
-            fig_2.savefig(save_image_2)
+            # save image
+            fig_2.savefig("r2_estimators.png")
 
-            # log artifact
-            mlflow.log_artifacts(image_dir, "images")
+            # log artifacts
+            mlflow.log_artifact("rsme_estimators.png")
+            mlflow.log_artifact("r2_estimators.png")
 
             # print some data
             print("-" * 100)
